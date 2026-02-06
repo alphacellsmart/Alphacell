@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlphaCell Assistência Técnica</title>
+
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #0b0f19;
+  color: #e5e7eb;
+  text-align: center;
+}
+
+/* Fundo blueprint */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.container {
+  max-width: 420px;
+  margin: auto;
+  padding: 24px;
+}
+
+.logo {
+  max-width: 160px;
+  margin: 10px auto 20px;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+/* Cards */
+.card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(6px);
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Botões serviço */
+.service-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 14px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.service-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.icon {
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 6px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Form */
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.action-btn {
+  margin-top: 14px;
+  padding: 14px;
+  background: #22c55e;
+  color: #022c22;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.small {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-top: 6px;
+}
+</style>
+
+<script>
+let servico = "";
+
+function escolherServico(s) {
+  servico = s;
+  document.getElementById("form").style.display = "block";
+}
+
+function enviarWhats() {
+  let modelo = document.getElementById("modelo").value;
+  if (!modelo) {
+    alert("Informe o modelo do celular");
+    return;
+  }
+  let msg =
+    `Olá, gostaria de ${servico} do celular ${modelo}. ` +
+    `Vocês atendem delivery em Araguaína?`;
+  let url =
+    "https://wa.me/5563992452659?text=" +
+    encodeURIComponent(msg);
+  window.location.href = url;
+}
+</script>
+</head>
+
+<body>
+<div class="container">
+
+<img src="logo.png" class="logo" alt="AlphaCell">
+
+<h1>AlphaCell</h1>
+<div class="subtitle">
+Assistência técnica profissional<br>
+rápida e com garantia
+</div>
+
+<div class="card">
+<h2>🚀 Nós vamos até você</h2>
+<p class="small">
+Buscamos seu aparelho em qualquer lugar de <b>Araguaína</b>
+e devolvemos consertado, sem você sair de casa.
+</p>
+</div>
+
+<div class="card">
+<h2>⏱️ Conserto rápido</h2>
+<p class="small">
+Na maioria dos serviços, o aparelho fica pronto
+em até <b>3 horas</b> após a retirada.*
+</p>
+</div>
+
+<div class="card">
+<h2>🛠️ Serviços</h2>
+
+<div class="service-btn" onclick="escolherServico('trocar a tela')">
+  <div class="icon">🔧</div> Troca de Tela
+</div>
+
+<div class="service-btn" onclick="escolherServico('trocar a bateria')">
+  <div class="icon">🔋</div> Troca de Bateria
+</div>
+
+<div class="service-btn" onclick="escolherServico('consertar o conector de carga')">
+  <div class="icon">⚡</div> Conector de Carga
+</div>
+
+<div class="service-btn" onclick="escolherServico('consertar câmera ou alto-falante')">
+  <div class="icon">📷</div> Câmera / Áudio
+</div>
+
+<div id="form" style="display:none;">
+  <input id="modelo" placeholder="Ex: Samsung A15, iPhone 11">
+  <div class="action-btn" onclick="enviarWhats()">
+    👉 Falar no WhatsApp
+  </div>
+</div>
+</div>
+
+<div class="card">
+<h2>🛡️ Garantia</h2>
+<p class="small">
+Todos os serviços contam com <b>90 dias de garantia</b>,
+conforme o tipo de reparo e uso adequado.
+</p>
+</div>
+
+</div>
+</body>
+</html>
