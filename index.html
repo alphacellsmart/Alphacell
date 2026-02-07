@@ -1,214 +1,197 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AlphaCell Assistência Técnica</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlphaCell | Assistência Técnica Premium</title>
 
-<style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #0b0f19;
-  color: #e5e7eb;
-  text-align: center;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f0f0f;
+      color: #f2f2f2;
+      animation: fadeIn 1s ease;
+    }
 
-/* Fundo blueprint */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: -1;
-}
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
-.container {
-  max-width: 420px;
-  margin: auto;
-  padding: 24px;
-}
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: linear-gradient(180deg, #000, #111);
+    }
 
-.logo {
-  max-width: 160px;
-  margin: 10px auto 20px;
-}
+    header img {
+      max-width: 160px;
+      margin-bottom: 10px;
+      animation: drop 0.8s ease;
+    }
 
-h1 {
-  font-size: 26px;
-  margin-bottom: 5px;
-}
+    @keyframes drop {
+      from { transform: translateY(-15px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
 
-.subtitle {
-  font-size: 15px;
-  color: #9ca3af;
-  margin-bottom: 20px;
-}
+    header h1 {
+      margin: 10px 0 5px;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
 
-/* Cards */
-.card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 14px;
-  padding: 18px;
-  margin-bottom: 16px;
-  backdrop-filter: blur(6px);
-}
+    header p {
+      margin: 0;
+      font-size: 14px;
+      color: #bbbbbb;
+    }
 
-.card h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
+    .container {
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
 
-/* Botões serviço */
-.service-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 12px;
-  padding: 14px;
-  margin: 10px 0;
-  cursor: pointer;
-  transition: 0.2s;
-}
+    .destaque {
+      background: #161616;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      text-align: center;
+      border: 1px solid #2a2a2a;
+      animation: slideUp 0.8s ease;
+    }
 
-.service-btn:hover {
-  background: rgba(255,255,255,0.15);
-}
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
 
-.icon {
-  width: 26px;
-  height: 26px;
-  border: 1px solid rgba(255,255,255,0.4);
-  border-radius: 6px;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
 
-/* Form */
-input {
-  width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: none;
-  margin-top: 10px;
-  font-size: 15px;
-}
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 15px;
+    }
 
-.action-btn {
-  margin-top: 14px;
-  padding: 14px;
-  background: #22c55e;
-  color: #022c22;
-  border-radius: 12px;
-  font-weight: bold;
-  cursor: pointer;
-}
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 14px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, #00ff99, #00cc77);
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      animation: pop 0.6s ease;
+    }
 
-.small {
-  font-size: 13px;
-  color: #9ca3af;
-  margin-top: 6px;
-}
-</style>
+    @keyframes pop {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
 
-<script>
-let servico = "";
+    .btn:hover {
+      box-shadow: 0 0 15px rgba(0,255,153,0.4);
+    }
 
-function escolherServico(s) {
-  servico = s;
-  document.getElementById("form").style.display = "block";
-}
+    .btn:active {
+      transform: scale(0.97);
+    }
 
-function enviarWhats() {
-  let modelo = document.getElementById("modelo").value;
-  if (!modelo) {
-    alert("Informe o modelo do celular");
-    return;
-  }
-  let msg =
-    `Olá, gostaria de ${servico} do celular ${modelo}. ` +
-    `Vocês atendem delivery em Araguaína?`;
-  let url =
-    "https://wa.me/5563992452659?text=" +
-    encodeURIComponent(msg);
-  window.location.href = url;
-}
-</script>
+    .garantia {
+      text-align: center;
+      font-size: 14px;
+      color: #cccccc;
+      margin-top: 30px;
+      animation: fadeIn 1.2s ease;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      margin-top: 30px;
+      padding-bottom: 20px;
+    }
+  </style>
+
+  <script>
+    function enviarWhats(servico) {
+      const modelo = document.getElementById("modelo").value;
+
+      if (modelo === "") {
+        alert("Digite o modelo do celular");
+        return;
+      }
+
+      const mensagem = `Olá, gostaria de orçamento para *${servico}* do celular *${modelo}*`;
+      const numero = "5563992452659";
+      const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+
+      window.open(link, "_blank");
+    }
+  </script>
 </head>
 
 <body>
-<div class="container">
 
-<img src="logo.png" class="logo" alt="AlphaCell">
+  <header>
+    <img src="logo-alphacell.png" alt="AlphaCell Logo">
+    <h1>AlphaCell</h1>
+    <p>Assistência Técnica Especializada</p>
+  </header>
 
-<h1>AlphaCell</h1>
-<div class="subtitle">
-Assistência técnica profissional<br>
-rápida e com garantia
-</div>
+  <div class="container">
 
-<div class="card">
-<h2>🚀 Nós vamos até você</h2>
-<p class="small">
-Buscamos seu aparelho em qualquer lugar de <b>Araguaína</b>
-e devolvemos consertado, sem você sair de casa.
-</p>
-</div>
+    <div class="destaque">
+      📍 Atendemos <strong>Araguaína</strong><br>
+      🚗 Buscamos e entregamos seu aparelho<br>
+      ⏱️ Conserto em até <strong>3 horas*</strong>
+    </div>
 
-<div class="card">
-<h2>⏱️ Conserto rápido</h2>
-<p class="small">
-Na maioria dos serviços, o aparelho fica pronto
-em até <b>3 horas</b> após a retirada.*
-</p>
-</div>
+    <h2>Informe o modelo do seu celular</h2>
+    <input id="modelo" type="text" placeholder="Ex: Samsung A15, Redmi 12, iPhone 11">
 
-<div class="card">
-<h2>🛠️ Serviços</h2>
+    <button class="btn" onclick="enviarWhats('Troca de Tela')">
+      🔧 Troca de Tela
+    </button>
 
-<div class="service-btn" onclick="escolherServico('trocar a tela')">
-  <div class="icon">🔧</div> Troca de Tela
-</div>
+    <button class="btn" onclick="enviarWhats('Troca de Bateria')">
+      🔋 Troca de Bateria
+    </button>
 
-<div class="service-btn" onclick="escolherServico('trocar a bateria')">
-  <div class="icon">🔋</div> Troca de Bateria
-</div>
+    <button class="btn" onclick="enviarWhats('Troca de Conector de Carga')">
+      ⚡ Conector de Carga
+    </button>
 
-<div class="service-btn" onclick="escolherServico('consertar o conector de carga')">
-  <div class="icon">⚡</div> Conector de Carga
-</div>
+    <button class="btn" onclick="enviarWhats('Outro Serviço')">
+      📱 Outro Serviço
+    </button>
 
-<div class="service-btn" onclick="escolherServico('consertar câmera ou alto-falante')">
-  <div class="icon">📷</div> Câmera / Áudio
-</div>
+    <div class="garantia">
+      ✅ Garantia de 90 dias<br>
+      *Prazo pode variar conforme modelo
+    </div>
 
-<div id="form" style="display:none;">
-  <input id="modelo" placeholder="Ex: Samsung A15, iPhone 11">
-  <div class="action-btn" onclick="enviarWhats()">
-    👉 Falar no WhatsApp
   </div>
-</div>
-</div>
 
-<div class="card">
-<h2>🛡️ Garantia</h2>
-<p class="small">
-Todos os serviços contam com <b>90 dias de garantia</b>,
-conforme o tipo de reparo e uso adequado.
-</p>
-</div>
+  <footer>
+    © AlphaCell Assistência Técnica
+  </footer>
 
-</div>
 </body>
 </html>
